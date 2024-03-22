@@ -77,7 +77,7 @@ public class Game {
 	private void printResult() {
 		System.out.printf("Number of simulations was %d using %d dice.%n", iterations, originalDiceAmount);
 		scoreCount.forEach((k, v) -> {
-			System.out.printf("Total %d occurs %d occurred %d times.%n", k, v / 100, v);
+			System.out.printf("Total %d occurs %.2f occurred %d times.%n", k, (double) v / 10000, v);
 		});
 
 		System.out.println("Total simulation took " + String.format("%.1f", timeToRunSImulation) + " seconds.");
