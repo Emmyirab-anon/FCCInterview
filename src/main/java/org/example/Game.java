@@ -14,6 +14,8 @@ public class Game {
 	private Integer originalDiceAmount = 0;
 	private double timeToRunSImulation = 0;
 
+	private final double NANOSECOND_TO_SECOND = 1_000_000_000.0;
+
 	Game(Integer iterations, Integer diceAmount) {
 		this.iterations = iterations;
 		this.diceAmount = diceAmount;
@@ -40,7 +42,7 @@ public class Game {
 		}
 
 		long endTime = System.nanoTime();
-		timeToRunSImulation = ((endTime - startTime) / 1_000_000_000.0);
+		timeToRunSImulation = ((endTime - startTime) / NANOSECOND_TO_SECOND);
 		printResult();
 	}
 
@@ -77,7 +79,7 @@ public class Game {
 	private void printResult() {
 		System.out.printf("Number of simulations was %d using %d dice.%n", iterations, originalDiceAmount);
 		scoreCount.forEach((k, v) -> {
-			System.out.printf("Total %d occurs %.2f occurred %d times.%n", k, (double) v / 10000, v);
+			System.out.printf("Total %d occurs %.4f occurred %d times.%n", k, (double) v / iterations, v);
 		});
 
 		System.out.println("Total simulation took " + String.format("%.1f", timeToRunSImulation) + " seconds.");
